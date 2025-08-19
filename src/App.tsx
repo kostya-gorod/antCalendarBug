@@ -1,24 +1,31 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Button, notification, Select } from 'antd';
+import dayjs from 'dayjs';
+
+import localeData from 'dayjs/plugin/localeData';
+import updateLocale from 'dayjs/plugin/updateLocale';
+
+
+const { Option } = Select;
+
+dayjs.extend(localeData);
+dayjs.extend(updateLocale);
+dayjs.updateLocale('en', {
+  weekStart: 1,
+});
+
+
+const onClick = () => {
+  notification.success({ message: 'Hello' })
+}
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button onClick={onClick}>Click</Button>
     </div>
   );
 }
